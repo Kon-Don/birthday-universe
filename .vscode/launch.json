@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Run Birthday Universe in Chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/birthday-universe",
+      "preLaunchTask": "npm: dev (birthday-universe)"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome (Already Running Server)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/birthday-universe"
+    }
+  ]
+}

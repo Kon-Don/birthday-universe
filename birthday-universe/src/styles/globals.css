@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* === BRITTANY SIGNATURE FONT (CSS fallback) === */
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('/fonts/BrittanySignature.woff2') format('woff2'),
+       url('/fonts/BrittanySignature.woff') format('woff'),
+       url('/fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* === CSS VARIABLES === */
+:root {
+  --hippo-lavender: #B8A9D9;
+  --baby-lilac: #D9CFF0;
+  --cotton-candy-pink: #F3BFD3;
+  --bubblegum-pink: #E99BB9;
+  --cloud-blue: #C6E4F5;
+  --marshmallow-white: #FFF8FC;
+  --soft-hippo-grey: #A9A9B8;
+  --deep-plum: #514267;
+  
+  /* Extended palette */
+  --cherry-red: #C94C6E;
+  --dark-cherry: #2D1B2E;
+  --soft-pink: #F8E1EB;
+  --glow-pink: rgba(233, 155, 185, 0.4);
+  --glow-lavender: rgba(184, 169, 217, 0.3);
+  
+  /* Typography */
+  --font-signature: 'Brittany Signature', 'Dancing Script', cursive;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+  --font-label: 'Poppins', sans-serif;
+  --font-letter: 'Cormorant Garamond', serif;
+  
+  /* Spacing */
+  --section-padding: 80px 20px;
+  --card-radius: 20px;
+  --button-radius: 50px;
+}
+
+/* === GLOBAL RESET === */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--hippo-lavender);
+  color: var(--deep-plum);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* === SCROLLBAR STYLING === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--baby-lilac);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bubblegum-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cherry-red);
+}
+
+/* === SELECTION === */
+::selection {
+  background: var(--cotton-candy-pink);
+  color: var(--deep-plum);
+}
+
+/* === UTILITY CLASSES === */
+.section-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card {
+  background: rgba(255, 248, 252, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 248, 252, 0.3);
+  border-radius: var(--card-radius);
+  padding: 30px;
+  box-shadow: 0 8px 32px rgba(81, 66, 103, 0.1);
+}
+
+.magic-button {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 40px;
+  border: none;
+  border-radius: var(--button-radius);
+  background: linear-gradient(135deg, var(--bubblegum-pink), var(--cotton-candy-pink));
+  color: var(--deep-plum);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(233, 155, 185, 0.4);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.magic-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.magic-button:hover::before {
+  left: 100%;
+}
+
+.magic-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 155, 185, 0.5);
+}
+
+.magic-button:active {
+  transform: translateY(-1px);
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--deep-plum);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-family: var(--font-label);
+  font-weight: 400;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: var(--soft-hippo-grey);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.signature-text {
+  font-family: var(--font-signature), cursive;
+}
+
+/* === PARTICLES === */
+.floating-particle {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUp 6s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .section-container {
+    padding: 60px 16px;
+  }
+  
+  .glass-card {
+    padding: 20px;
+  }
+  
+  .magic-button {
+    padding: 14px 30px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding: 40px 12px;
+  }
+}
+

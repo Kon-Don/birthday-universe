@@ -1,0 +1,347 @@
+.hippo-game-section {
+  background: linear-gradient(180deg, #FFF8FC 0%, #D9CFF0 50%, #B8A9D9 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px;
+}
+
+.game-header-group {
+  text-align: center;
+  margin-bottom: 25px;
+  z-index: 10;
+}
+
+.game-badge {
+  display: inline-block;
+  background: rgba(201, 76, 110, 0.15);
+  color: var(--cherry-red);
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(201, 76, 110, 0.3);
+}
+
+/* === STATS BAR === */
+.game-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 28px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 24px rgba(81, 66, 103, 0.12);
+  flex-wrap: wrap;
+  z-index: 10;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-label);
+}
+
+.stat-icon {
+  color: var(--deep-plum);
+}
+
+.stat-icon.match { color: #2E7D32; }
+.stat-icon.remaining { color: var(--cherry-red); }
+.stat-icon.time { color: #1976D2; }
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #7b6f8a;
+}
+
+.stat-value {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--deep-plum);
+}
+
+.game-reset-icon-btn {
+  background: rgba(81, 66, 103, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--deep-plum);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.game-reset-icon-btn:hover {
+  background: var(--bubblegum-pink);
+  transform: rotate(180deg);
+  color: white;
+}
+
+.game-feedback-banner {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  z-index: 10;
+}
+
+.match-toast {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FF7BAC, #E99BB9);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(233, 155, 185, 0.5);
+}
+
+/* === 6-CARD GRID === */
+/* 3-column by 2-row on desktop */
+.hippo-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 680px;
+  width: 100%;
+  margin-bottom: 25px;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  /* 2-column by 3-row on mobile */
+  .hippo-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 360px;
+  }
+}
+
+.hippo-card-perspective {
+  perspective: 1000px;
+  aspect-ratio: 1 / 1.15;
+  cursor: pointer;
+}
+
+.hippo-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+
+.hippo-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Front Face: Face Down */
+.card-front {
+  background: linear-gradient(135deg, #C94C6E 0%, #871F42 100%);
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(135, 31, 66, 0.35);
+}
+
+.card-pattern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+
+.card-question-mark {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  color: #FFF8FC;
+  font-weight: 700;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.card-front-heart {
+  color: var(--cotton-candy-pink);
+  fill: var(--cotton-candy-pink);
+  margin-top: 5px;
+}
+
+/* Back Face: Face Up */
+.card-back {
+  background: #FFF8FC;
+  transform: rotateY(180deg);
+  border: 3px solid var(--bubblegum-pink);
+  box-shadow: 0 10px 25px rgba(81, 66, 103, 0.2);
+  justify-content: space-between;
+}
+
+.card-hippo-img {
+  width: 80%;
+  height: 75%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.card-hippo-label {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--deep-plum);
+  text-align: center;
+}
+
+.card-matched-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #2E7D32;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+}
+
+.best-score-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #7b6f8a;
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+/* === VICTORY MODAL === */
+.victory-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 8, 24, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.victory-card {
+  max-width: 500px;
+  width: 100%;
+  background: #FFF8FC;
+  text-align: center;
+  padding: 35px 25px;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.victory-crown {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.victory-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+  color: var(--deep-plum);
+  margin: 0 0 8px;
+}
+
+.victory-subtitle {
+  font-family: var(--font-label);
+  font-size: 1rem;
+  color: var(--cherry-red);
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.victory-hippo-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.victory-hippo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.victory-hippo-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f4ecf7;
+  padding: 4px;
+  border: 2px solid var(--bubblegum-pink);
+}
+
+.victory-hippo-item span {
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  color: #7b6f8a;
+  max-width: 80px;
+  text-align: center;
+}
+
+.victory-stats-summary {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 25px;
+  padding: 12px;
+  background: rgba(233, 155, 185, 0.15);
+  border-radius: 12px;
+}
+
+.vic-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.vic-label {
+  font-family: var(--font-label);
+  font-size: 0.75rem;
+  color: #7b6f8a;
+}
+
+.vic-val {
+  font-family: var(--font-label);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--deep-plum);
+}
+
+.victory-play-again-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+

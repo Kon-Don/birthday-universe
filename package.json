@@ -1,0 +1,12 @@
+{
+  "name": "wish-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm --prefix birthday-universe run dev",
+    "start": "npm --prefix birthday-universe run dev",
+    "build": "npm --prefix birthday-universe run build",
+    "preview": "npm --prefix birthday-universe run preview"
+  }
+}
+
